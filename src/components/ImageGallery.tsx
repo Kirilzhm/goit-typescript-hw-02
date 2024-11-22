@@ -1,7 +1,21 @@
+import React from "react";
 import ImageCard from "./ImageCard";
 import styles from "./ImageGallery.module.css";
 
-const ImageGallery = ({ images, onImageClick }) => {
+type ImageGalleryProps = {
+  images: {
+    id: string;
+    urls: { small: string; regular: string };
+    alt_description: string;
+  }[];
+  onImageClick: (image: {
+    id: string;
+        urls: { small: string; regular: string };
+        alt_description: string;
+  }) => void;
+};
+
+const ImageGallery = ({ images, onImageClick }: ImageGalleryProps) => { 
   return (
     <ul className={styles.gallery}>
       {images.map((image) => (

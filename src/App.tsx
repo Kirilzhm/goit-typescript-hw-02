@@ -1,3 +1,4 @@
+import React from "react";
 import SearchBtn from "./components/SearchBar";
 import ImageGallery from "./components/ImageGallery";
 import fetchImagesWithQuery from "./images-api";
@@ -9,14 +10,20 @@ import { useState } from "react";
 import LoadMoreBtn from "./components/LoadMoreBtn";
 
 function App() {
-  const [query, setQuery] = useState("");
-  const [images, setImages] = useState([]); 
+  const [query, setQuery] = useState<string>("");
+  const [images, setImages] = useState<Image[]>([]); 
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
-  const handleSearchSubmit = async (newQuery) => {
+  type Image = {
+    id: string;
+    urls: {small: string; regular: string};
+    alt_description: string;
+  }
+
+  const handleSearchSubmit = async (newQuery: string) => {
     setQuery(newQuery);
     setImages([]);  
     setPage(1); 
@@ -47,7 +54,7 @@ function App() {
     }
   };
 
-  const openModal = (image) => {
+  const openModal = (image: Image) => {
     setSelectedImage(image);
   };
 

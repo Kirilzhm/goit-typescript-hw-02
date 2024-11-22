@@ -1,6 +1,13 @@
+import React from "react";
 import styles from "./ImageCard.module.css";
 
-const ImageCard = ({ src, alt, onClick }) => {
+type ImageCardProps = {
+  src: string;
+  alt: string;
+  onClick: () => void;
+};
+
+const ImageCard = ({ src, alt, onClick }: ImageCardProps) => {
   return (
     <div className={styles.galleryImgBox} onClick={onClick}>
       <img className={styles.galleryImage} src={src} alt={alt} />

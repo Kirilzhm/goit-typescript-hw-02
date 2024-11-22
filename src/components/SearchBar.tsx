@@ -1,10 +1,15 @@
+import React from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-const SearchBtn = ({ onSubmit }) => {
+type SearchBtnProps = {
+    onSubmit: (query: string) => void;
+}
+
+const SearchBtn = ({ onSubmit }: SearchBtnProps) => {
     const [query, setQuery] = useState("");
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if (query.trim() === "") {

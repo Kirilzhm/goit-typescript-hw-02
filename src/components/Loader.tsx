@@ -1,12 +1,12 @@
+import React from "react";
 import { InfinitySpin } from "react-loader-spinner";
 
 const Loader = () => {
-    return (
+    return (    
         <div>
-            <InfinitySpin visible={true}
+            <InfinitySpin 
                 width="200"
-                color="#4fa94d"
-                ariaLabel="infinity-spin-loading" />
+                color="#4fa94d"/>
         </div>
     );
 };
